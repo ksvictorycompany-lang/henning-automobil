@@ -1,3 +1,5 @@
+"use client";
+
 const BRANDS = [
   {
     name: "Mercedes-Benz",
