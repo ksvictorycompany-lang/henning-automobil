@@ -60,7 +60,7 @@ export function MobileHeroCarousel() {
   return (
     <section
       className="relative overflow-hidden"
-      style={{ height: "52vh", minHeight: "300px" }}
+      style={{ height: "40vh", minHeight: "220px" }}
     >
       {/* Background images — crossfade */}
       {SLIDES.map((s, i) => (
