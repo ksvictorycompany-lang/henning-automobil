@@ -79,10 +79,100 @@ export default function HomePage() {
       <Navbar />
       <main className="flex-1">
 
-        {/* HERO — FullScreen Scroll FX */}
-        <HeroScrollFX />
+        {/* MOBILE HERO — compact static (≤ md) */}
+        <section
+          className="block md:hidden relative overflow-hidden"
+          style={{ height: "52vh", minHeight: "280px" }}
+        >
+          <Image
+            src="https://image-am.pixel-base.de/image/2296/1715338_2026.03.27.21.59.07_30260242_01.jpg?vehicleId=1715338&lsid=639102455475470000"
+            alt="Mercedes GLE 53 AMG"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background: "linear-gradient(160deg, rgba(28,28,30,0.82) 0%, rgba(28,28,30,0.35) 60%, rgba(28,28,30,0.55) 100%)",
+            }}
+          />
+          <div className="absolute inset-0 flex flex-col justify-end px-6 pb-7 pt-20">
+            <p
+              style={{
+                fontFamily: "var(--font-rajdhani)",
+                fontWeight: 600,
+                fontSize: "0.6rem",
+                letterSpacing: "0.45em",
+                color: "#C0001E",
+                marginBottom: "0.35rem",
+                textTransform: "uppercase",
+              }}
+            >
+              Seit 1902 · Herne
+            </p>
+            <h1
+              style={{
+                fontFamily: "var(--font-rajdhani)",
+                fontWeight: 700,
+                fontSize: "clamp(2.2rem, 12vw, 3.4rem)",
+                color: "#EAEAEE",
+                lineHeight: 0.92,
+                textTransform: "uppercase",
+                marginBottom: "1.1rem",
+              }}
+            >
+              Henning<br />
+              <span style={{ color: "#C0001E" }}>Automobil</span>
+            </h1>
+            <div className="flex gap-3">
+              <Link
+                href="/fahrzeuge"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "0.3rem",
+                  padding: "0.55rem 1.2rem",
+                  background: "#C0001E",
+                  color: "#fff",
+                  fontFamily: "var(--font-rajdhani)",
+                  fontWeight: 700,
+                  fontSize: "0.72rem",
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                }}
+              >
+                Fahrzeuge <ArrowRight size={12} />
+              </Link>
+              <a
+                href="https://www.henning-automobil.de/beratungstermin/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  padding: "0.55rem 1.2rem",
+                  border: "1px solid rgba(234,234,238,0.25)",
+                  color: "rgba(234,234,238,0.8)",
+                  fontFamily: "var(--font-rajdhani)",
+                  fontWeight: 700,
+                  fontSize: "0.72rem",
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                }}
+              >
+                Termin
+              </a>
+            </div>
+          </div>
+        </section>
 
-        {/* BRANDS MARQUEE */}
+        {/* DESKTOP HERO — FullScreen Scroll FX (≥ md) */}
+        <div className="hidden md:block">
+          <HeroScrollFX />
+        </div>
+
+        {/* BRANDS MARQUEE — directly below hero on both breakpoints */}
         <LogoMarquee />
 
         {/* FEATURED VEHICLES */}
@@ -235,7 +325,7 @@ export default function HomePage() {
             </div>
 
             <div
-              className="relative h-[380px] md:h-[460px] overflow-hidden"
+              className="relative h-52 md:h-[460px] overflow-hidden"
               style={{ border: "1px solid rgba(255,255,255,0.06)" }}
             >
               <Image
