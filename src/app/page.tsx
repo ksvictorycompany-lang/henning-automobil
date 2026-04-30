@@ -2,7 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { VehicleCard } from "@/components/VehicleCard";
+import { LogoMarquee } from "@/components/LogoMarquee";
+import { HeroScrollFX } from "@/components/HeroScrollFX";
+import { VehicleScrollSection } from "@/components/VehicleScrollSection";
 import {
   Wrench,
   ShieldCheck,
@@ -17,7 +19,6 @@ import {
   MapPin,
   Phone,
   Clock,
-  ChevronRight,
 } from "lucide-react";
 
 const FEATURED_VEHICLES = [
@@ -71,213 +72,20 @@ const SERVICES = [
   { icon: Scan, title: "Scheibenreparatur", desc: "Steinschlag oder Vandalismus — schneller Einbau neuer Scheiben" },
 ];
 
-const BRANDS = [
-  {
-    name: "Mercedes-Benz",
-    src: "https://www.henning-automobil.de/wp-content/uploads/2022/11/mercedes-light.svg",
-    href: "https://www.henning-automobil.de/fahrzeugboerse/#!/vehicles?manufacturers=236",
-  },
-  {
-    name: "AMG",
-    src: "https://www.henning-automobil.de/wp-content/uploads/2022/11/amg-light.svg",
-    href: "https://www.henning-automobil.de/fahrzeugboerse/#!/",
-  },
-  {
-    name: "EQ",
-    src: "https://www.henning-automobil.de/wp-content/uploads/2022/11/eq-light.svg",
-    href: "https://www.henning-automobil.de/fahrzeugboerse/#!/vehicles?manufacturers=236&fuellings=%22elektro%22",
-  },
-  {
-    name: "smart",
-    src: "https://www.henning-automobil.de/wp-content/uploads/2022/11/smart-light.svg",
-    href: "https://www.henning-automobil.de/fahrzeugboerse/#!/vehicles?manufacturers=267&othermanufacturers=true",
-  },
-];
-
 export default function HomePage() {
   return (
     <>
       <Navbar />
       <main className="flex-1">
 
-        {/* HERO */}
-        <section className="relative min-h-screen flex items-center overflow-hidden grid-texture">
-          <div
-            className="absolute inset-0 z-0"
-            style={{
-              background:
-                "linear-gradient(135deg, rgba(12,12,14,0.97) 0%, rgba(12,12,14,0.85) 50%, rgba(12,12,14,0.6) 100%)",
-            }}
-          />
-          <div className="absolute right-0 top-0 bottom-0 w-full md:w-[60%] z-0">
-            <Image
-              src="https://image-am.pixel-base.de/image/2296/1715338_2026.03.27.21.59.07_30260242_01.jpg?vehicleId=1715338&lsid=639102455475470000"
-              alt="Mercedes GLE 53 AMG"
-              fill
-              className="object-cover object-center"
-              priority
-            />
-            <div
-              className="absolute inset-0"
-              style={{
-                background:
-                  "linear-gradient(90deg, #0C0C0E 0%, rgba(12,12,14,0.5) 40%, rgba(12,12,14,0.1) 100%)",
-              }}
-            />
-          </div>
+        {/* HERO — FullScreen Scroll FX */}
+        <HeroScrollFX />
 
-          <div className="relative z-10 w-full max-w-7xl mx-auto px-5 md:px-8 pt-28 pb-16 md:pt-0">
-            <div className="max-w-2xl">
-              <p
-                className="text-xs tracking-[0.5em] uppercase mb-5"
-                style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 600, color: "#C0001E" }}
-              >
-                Seit 1902 · Herne
-              </p>
-              <h1
-                className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl uppercase leading-none mb-6"
-                style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 700, color: "#EAEAEE" }}
-              >
-                Henning
-                <br />
-                <span style={{ color: "#C0001E" }}>Automobil</span>
-              </h1>
-              <p
-                className="text-lg md:text-xl mb-10 max-w-lg"
-                style={{ fontFamily: "var(--font-dm-sans)", color: "rgba(138,138,150,0.85)" }}
-              >
-                Ihr offizieller Mercedes-Benz Partner in Herne. Verkauf, Service
-                und Werkstatt aus einer Hand — seit über 120 Jahren.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  href="/fahrzeuge"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 text-sm tracking-wider uppercase font-bold transition-all duration-200 hover:opacity-90"
-                  style={{
-                    fontFamily: "var(--font-rajdhani)",
-                    fontWeight: 700,
-                    letterSpacing: "0.1em",
-                    background: "#C0001E",
-                    color: "#FFFFFF",
-                  }}
-                >
-                  Fahrzeuge entdecken
-                  <ArrowRight size={16} />
-                </Link>
-                <a
-                  href="https://www.henning-automobil.de/beratungstermin/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-8 py-4 text-sm tracking-wider uppercase font-bold transition-all duration-200 hover:border-white hover:text-white"
-                  style={{
-                    fontFamily: "var(--font-rajdhani)",
-                    fontWeight: 700,
-                    letterSpacing: "0.1em",
-                    border: "1px solid rgba(234,234,238,0.2)",
-                    color: "rgba(234,234,238,0.7)",
-                  }}
-                >
-                  Termin vereinbaren
-                </a>
-              </div>
+        {/* BRANDS MARQUEE */}
+        <LogoMarquee />
 
-              <div className="mt-14 flex gap-10">
-                {[
-                  { value: "120+", label: "Jahre Erfahrung" },
-                  { value: "120+", label: "Fahrzeuge" },
-                  { value: "2", label: "Standorte" },
-                ].map((stat) => (
-                  <div key={stat.label}>
-                    <p
-                      className="text-3xl leading-none"
-                      style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 700, color: "#C0001E" }}
-                    >
-                      {stat.value}
-                    </p>
-                    <p
-                      className="text-xs mt-1"
-                      style={{ fontFamily: "var(--font-dm-sans)", color: "rgba(138,138,150,0.6)" }}
-                    >
-                      {stat.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-          <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: "rgba(192,0,30,0.3)" }} />
-        </section>
-
-        {/* BRANDS STRIP */}
-        <section style={{ background: "#151518", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-          <div className="max-w-7xl mx-auto px-5 md:px-8 py-8">
-            <div className="flex items-center justify-center gap-12 md:gap-20 flex-wrap">
-              {BRANDS.map((brand) => (
-                <a
-                  key={brand.name}
-                  href={brand.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="transition-opacity duration-200 hover:opacity-100"
-                  style={{ opacity: 0.45 }}
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={brand.src}
-                    alt={brand.name}
-                    className="h-7 w-auto"
-                    style={{ filter: "brightness(0) invert(1)" }}
-                  />
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* FEATURED VEHICLES */}
-        <section className="py-20 md:py-28 px-5 md:px-8">
-          <div className="max-w-7xl mx-auto">
-            <div className="flex items-end justify-between mb-10 md:mb-14">
-              <div>
-                <p
-                  className="text-xs tracking-[0.4em] uppercase mb-3"
-                  style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 600, color: "#C0001E" }}
-                >
-                  MANUFAKTUR Fahrzeuge
-                </p>
-                <h2
-                  className="text-4xl md:text-5xl uppercase leading-none"
-                  style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 700, color: "#EAEAEE" }}
-                >
-                  Aktuelle<br />Highlights
-                </h2>
-              </div>
-              <Link
-                href="/fahrzeuge"
-                className="hidden md:flex items-center gap-2 text-sm uppercase font-bold transition-colors duration-200 hover:text-white"
-                style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 700, letterSpacing: "0.08em", color: "rgba(138,138,150,0.6)" }}
-              >
-                Alle Fahrzeuge <ChevronRight size={16} />
-              </Link>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {FEATURED_VEHICLES.map((v) => (
-                <VehicleCard key={v.vehicleId} {...v} />
-              ))}
-            </div>
-
-            <div className="mt-8 text-center md:hidden">
-              <Link
-                href="/fahrzeuge"
-                className="inline-flex items-center gap-2 text-sm uppercase font-bold"
-                style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 700, color: "#C0001E" }}
-              >
-                Alle 120+ Fahrzeuge <ChevronRight size={16} />
-              </Link>
-            </div>
-          </div>
-        </section>
+        {/* FEATURED VEHICLES — Horizontal scroll */}
+        <VehicleScrollSection vehicles={FEATURED_VEHICLES} />
 
         {/* SERVICES GRID */}
         <section
@@ -305,11 +113,7 @@ export default function HomePage() {
               {SERVICES.map((s) => {
                 const Icon = s.icon;
                 return (
-                  <div
-                    key={s.title}
-                    className="p-7"
-                    style={{ background: "#151518" }}
-                  >
+                  <div key={s.title} className="p-7" style={{ background: "#151518" }}>
                     <Icon size={24} className="mb-4" style={{ color: "#C0001E" }} />
                     <h3
                       className="text-lg uppercase mb-2"
@@ -446,7 +250,6 @@ export default function HomePage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Standort 1 */}
               <div className="p-8" style={{ background: "#1F1F24", border: "1px solid rgba(255,255,255,0.06)" }}>
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-1 h-8" style={{ background: "#C0001E" }} />
@@ -496,7 +299,6 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Standort 2 */}
               <div className="p-8" style={{ background: "#1F1F24", border: "1px solid rgba(255,255,255,0.06)" }}>
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-1 h-8" style={{ background: "#C0001E" }} />
@@ -563,7 +365,7 @@ export default function HomePage() {
                 href="https://plan.soft-nrg.com/group/-nnY39I1A9Ncto7f1cQPWEgaVsoXZdl1rC-3T8yBYyQkOdGoMSEoUg/signin"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-8 py-4 text-sm uppercase font-bold transition-all duration-200 hover:bg-white hover:text-red"
+                className="inline-flex items-center justify-center px-8 py-4 text-sm uppercase font-bold transition-all duration-200"
                 style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 700, letterSpacing: "0.1em", border: "1px solid rgba(255,255,255,0.5)", color: "#FFFFFF" }}
               >
                 Werkstatttermin
