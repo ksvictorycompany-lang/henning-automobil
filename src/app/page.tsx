@@ -4,7 +4,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { LogoMarquee } from "@/components/LogoMarquee";
 import { HeroScrollFX } from "@/components/HeroScrollFX";
-import { VehicleScrollSection } from "@/components/VehicleScrollSection";
+import { VehicleCard } from "@/components/VehicleCard";
 import {
   Wrench,
   ShieldCheck,
@@ -16,6 +16,7 @@ import {
   Truck,
   Scan,
   ArrowRight,
+  ChevronRight,
   MapPin,
   Phone,
   Clock,
@@ -84,8 +85,48 @@ export default function HomePage() {
         {/* BRANDS MARQUEE */}
         <LogoMarquee />
 
-        {/* FEATURED VEHICLES — Horizontal scroll */}
-        <VehicleScrollSection vehicles={FEATURED_VEHICLES} />
+        {/* FEATURED VEHICLES */}
+        <section className="py-20 md:py-28 px-5 md:px-8">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex items-end justify-between mb-10 md:mb-14">
+              <div>
+                <p
+                  className="text-xs tracking-[0.4em] uppercase mb-3"
+                  style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 600, color: "#C0001E" }}
+                >
+                  MANUFAKTUR Fahrzeuge
+                </p>
+                <h2
+                  className="text-4xl md:text-5xl uppercase leading-none"
+                  style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 700, color: "#EAEAEE" }}
+                >
+                  Aktuelle<br />Highlights
+                </h2>
+              </div>
+              <Link
+                href="/fahrzeuge"
+                className="hidden md:flex items-center gap-2 text-sm uppercase font-bold transition-colors duration-200 hover:text-white"
+                style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 700, letterSpacing: "0.08em", color: "rgba(138,138,150,0.6)" }}
+              >
+                Alle Fahrzeuge <ChevronRight size={16} />
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {FEATURED_VEHICLES.map((v) => (
+                <VehicleCard key={v.vehicleId} {...v} />
+              ))}
+            </div>
+            <div className="mt-8 text-center md:hidden">
+              <Link
+                href="/fahrzeuge"
+                className="inline-flex items-center gap-2 text-sm uppercase font-bold"
+                style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 700, color: "#C0001E" }}
+              >
+                Alle 120+ Fahrzeuge <ChevronRight size={15} />
+              </Link>
+            </div>
+          </div>
+        </section>
 
         {/* SERVICES GRID */}
         <section

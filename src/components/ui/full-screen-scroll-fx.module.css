@@ -243,6 +243,16 @@
 }
 
 @media (max-width: 900px) {
+  .fxFixed {
+    height: 60vh;
+  }
+
+  .fxBgImg {
+    inset: 0;
+    height: 100%;
+    object-position: center 60%;
+  }
+
   .fxContent {
     grid-template-columns: 1fr;
     row-gap: 3vh;
@@ -256,5 +266,18 @@
 
   .fxCenter {
     height: auto;
+  }
+
+  .fxFeaturedTitle {
+    font-size: clamp(1.6rem, 10vw, 3rem);
+  }
+
+  .fxHeader {
+    font-size: clamp(1.2rem, 6vw, 4rem);
+    padding-top: 3vh;
+  }
+
+  .fxFooter {
+    padding-bottom: 3vh;
   }
 }
