@@ -145,12 +145,12 @@ export function HeroScrollFX() {
       sections={HERO_SECTIONS}
       header={HEADER}
       footer={FOOTER}
-      showProgress
+      showProgress={false}
       bgTransition="fade"
       parallaxAmount={4}
       colors={{
         text: "rgba(234,234,238,0.95)",
-        overlay: "rgba(0,0,0,0.48)",
+        overlay: "rgba(0,0,0,0.22)",
         pageBg: "#0C0C0E",
         stageBg: "#0C0C0E",
       }}
