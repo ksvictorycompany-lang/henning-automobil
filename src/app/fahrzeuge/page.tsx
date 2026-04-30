@@ -2,6 +2,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PageHeader } from "@/components/PageHeader";
 import { VehicleCard } from "@/components/VehicleCard";
+import { VehicleSliderGrid } from "@/components/VehicleSliderGrid";
 import { ArrowRight, ExternalLink } from "lucide-react";
 
 const ALL_VEHICLES = [
@@ -144,8 +145,13 @@ export default function FahrzeugePage() {
               </a>
             </div>
 
-            {/* Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {/* Desktop: auto-slider grid */}
+            <div className="hidden md:block">
+              <VehicleSliderGrid vehicles={ALL_VEHICLES} />
+            </div>
+
+            {/* Mobile: card grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:hidden">
               {ALL_VEHICLES.map((v) => (
                 <VehicleCard key={v.vehicleId} {...v} />
               ))}
