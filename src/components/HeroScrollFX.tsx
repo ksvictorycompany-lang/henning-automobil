@@ -29,32 +29,24 @@ const HERO_SECTIONS: Section[] = [
     background:
       "https://image-am.pixel-base.de/image/2296/1724622_2026.03.24.12.34.36_30260520_01.jpg?vehicleId=1724622&lsid=639099524760530000",
     title: "E 63 AMG",
-    leftLabel: "Limousine · MANUFAKTUR",
-    rightLabel: "149.580 €",
   },
   {
     id: "gle53",
     background:
       "https://image-am.pixel-base.de/image/2296/1715338_2026.03.27.21.59.07_30260242_01.jpg?vehicleId=1715338&lsid=639102455475470000",
     title: "GLE 53 AMG",
-    leftLabel: "SUV Coupé · Night",
-    rightLabel: "136.880 €",
   },
   {
     id: "gt53",
     background:
       "https://image-am.pixel-base.de/image/2296/1625698_2026.03.12.21.58.24_30242057_01.jpg?vehicleId=1625698&lsid=639089495045370000",
     title: "AMG GT 53",
-    leftLabel: "Gran Turismo · Burmester",
-    rightLabel: "108.900 €",
   },
   {
     id: "cle53",
     background:
       "https://image-am.pixel-base.de/image/2296/1732697_2026.04.30.12.34.44_30260743_01.jpg?vehicleId=1732697&lsid=639131492848370000",
     title: "CLE 53 AMG",
-    leftLabel: "Coupé · 4MATIC+",
-    rightLabel: "87.880 €",
   },
 ];
 

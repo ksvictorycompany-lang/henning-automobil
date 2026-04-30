@@ -5,6 +5,8 @@ import { Footer } from "@/components/Footer";
 import { LogoMarquee } from "@/components/LogoMarquee";
 import { HeroScrollFX } from "@/components/HeroScrollFX";
 import { VehicleCard } from "@/components/VehicleCard";
+import { MobileHeroCarousel } from "@/components/MobileHeroCarousel";
+import { TextMarquee } from "@/components/TextMarquee";
 import {
   Wrench,
   ShieldCheck,
@@ -79,93 +81,10 @@ export default function HomePage() {
       <Navbar />
       <main className="flex-1">
 
-        {/* MOBILE HERO — compact static (≤ md) */}
-        <section
-          className="block md:hidden relative overflow-hidden"
-          style={{ height: "52vh", minHeight: "280px" }}
-        >
-          <Image
-            src="https://image-am.pixel-base.de/image/2296/1715338_2026.03.27.21.59.07_30260242_01.jpg?vehicleId=1715338&lsid=639102455475470000"
-            alt="Mercedes GLE 53 AMG"
-            fill
-            className="object-cover object-center"
-            priority
-          />
-          <div
-            className="absolute inset-0"
-            style={{
-              background: "linear-gradient(160deg, rgba(28,28,30,0.82) 0%, rgba(28,28,30,0.35) 60%, rgba(28,28,30,0.55) 100%)",
-            }}
-          />
-          <div className="absolute inset-0 flex flex-col justify-end px-6 pb-7 pt-20">
-            <p
-              style={{
-                fontFamily: "var(--font-rajdhani)",
-                fontWeight: 600,
-                fontSize: "0.6rem",
-                letterSpacing: "0.45em",
-                color: "#C0001E",
-                marginBottom: "0.35rem",
-                textTransform: "uppercase",
-              }}
-            >
-              Seit 1902 · Herne
-            </p>
-            <h1
-              style={{
-                fontFamily: "var(--font-rajdhani)",
-                fontWeight: 700,
-                fontSize: "clamp(2.2rem, 12vw, 3.4rem)",
-                color: "#EAEAEE",
-                lineHeight: 0.92,
-                textTransform: "uppercase",
-                marginBottom: "1.1rem",
-              }}
-            >
-              Henning<br />
-              <span style={{ color: "#C0001E" }}>Automobil</span>
-            </h1>
-            <div className="flex gap-3">
-              <Link
-                href="/fahrzeuge"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.3rem",
-                  padding: "0.55rem 1.2rem",
-                  background: "#C0001E",
-                  color: "#fff",
-                  fontFamily: "var(--font-rajdhani)",
-                  fontWeight: 700,
-                  fontSize: "0.72rem",
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                }}
-              >
-                Fahrzeuge <ArrowRight size={12} />
-              </Link>
-              <a
-                href="https://www.henning-automobil.de/beratungstermin/"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  padding: "0.55rem 1.2rem",
-                  border: "1px solid rgba(234,234,238,0.25)",
-                  color: "rgba(234,234,238,0.8)",
-                  fontFamily: "var(--font-rajdhani)",
-                  fontWeight: 700,
-                  fontSize: "0.72rem",
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                }}
-              >
-                Termin
-              </a>
-            </div>
-          </div>
-        </section>
+        {/* MOBILE HERO — carousel (≤ md) */}
+        <div className="block md:hidden">
+          <MobileHeroCarousel />
+        </div>
 
         {/* DESKTOP HERO — FullScreen Scroll FX (≥ md) */}
         <div className="hidden md:block">
@@ -336,28 +255,14 @@ export default function HomePage() {
               />
               <div
                 className="absolute inset-0"
-                style={{ background: "linear-gradient(135deg, rgba(12,12,14,0.7) 0%, rgba(12,12,14,0.2) 100%)" }}
+                style={{ background: "linear-gradient(135deg, rgba(28,28,30,0.5) 0%, rgba(28,28,30,0.1) 100%)" }}
               />
-              <div
-                className="absolute bottom-6 left-6 px-4 py-3"
-                style={{ background: "rgba(12,12,14,0.9)", border: "1px solid rgba(192,0,30,0.3)" }}
-              >
-                <p
-                  className="text-2xl"
-                  style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 700, color: "#C0001E" }}
-                >
-                  Seit 1902
-                </p>
-                <p
-                  className="text-xs"
-                  style={{ fontFamily: "var(--font-dm-sans)", color: "rgba(138,138,150,0.7)" }}
-                >
-                  Ihr Vertrauen. Unsere Stärke.
-                </p>
-              </div>
             </div>
           </div>
         </section>
+
+        {/* ÜBER-UNS TEXT MARQUEE */}
+        <TextMarquee text="Seit 1902 · Ihr Vertrauen. Unsere Stärke." separator="★" speed={30} />
 
         {/* STANDORTE */}
         <section
