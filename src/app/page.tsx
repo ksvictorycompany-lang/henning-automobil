@@ -257,23 +257,12 @@ export default function HomePage() {
                 className="absolute inset-0"
                 style={{ background: "linear-gradient(135deg, rgba(28,28,30,0.55) 0%, rgba(28,28,30,0.1) 100%)" }}
               />
-              <div
-                className="absolute bottom-5 left-5 px-4 py-3"
-                style={{ background: "rgba(28,28,30,0.88)", border: "1px solid rgba(192,0,30,0.3)" }}
-              >
-                <p className="text-2xl" style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 700, color: "#C0001E" }}>
-                  Seit 1902
-                </p>
-                <p className="text-xs" style={{ fontFamily: "var(--font-dm-sans)", color: "rgba(138,138,150,0.7)" }}>
-                  Ihr Vertrauen. Unsere Stärke.
-                </p>
-              </div>
             </div>
           </div>
         </section>
 
-        {/* SEIT 1902 VELOCITY MARQUEE */}
-        <div style={{ borderTop: "1px solid rgba(255,255,255,0.07)", padding: "1.5rem 0" }}>
+        {/* SEIT 1902 VELOCITY MARQUEE — mobile only */}
+        <div className="block md:hidden" style={{ borderTop: "1px solid rgba(255,255,255,0.07)", padding: "1.5rem 0" }}>
           <VelocityMarquee baseVelocity={-4} scrollDependent>
             Seit 1902 · Ihr Vertrauen. Unsere Stärke. ·
           </VelocityMarquee>
