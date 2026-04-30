@@ -1,7 +1,18 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "image-am.pixel-base.de",
+      },
+      {
+        protocol: "https",
+        hostname: "www.henning-automobil.de",
+      },
+    ],
+  },
 };
 
 export default nextConfig;
