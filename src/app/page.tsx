@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { LogoMarquee } from "@/components/LogoMarquee";
-import { HeroScrollFX } from "@/components/HeroScrollFX";
+import { DesktopHeroCarousel } from "@/components/DesktopHeroCarousel";
 import { VehicleCard } from "@/components/VehicleCard";
 import { MobileHeroCarousel } from "@/components/MobileHeroCarousel";
 import { VelocityMarquee } from "@/components/VelocityMarquee";
@@ -86,9 +86,9 @@ export default function HomePage() {
           <MobileHeroCarousel />
         </div>
 
-        {/* DESKTOP HERO — FullScreen Scroll FX (≥ md) */}
+        {/* DESKTOP HERO — auto-rotating carousel (≥ md) */}
         <div className="hidden md:block">
-          <HeroScrollFX />
+          <DesktopHeroCarousel />
         </div>
 
         {/* BRANDS MARQUEE — directly below hero on both breakpoints */}
