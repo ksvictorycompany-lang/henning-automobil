@@ -5,23 +5,16 @@ import { Footer } from "@/components/Footer";
 import { LogoMarquee } from "@/components/LogoMarquee";
 import { DesktopHeroCarousel } from "@/components/DesktopHeroCarousel";
 import { VehicleCard } from "@/components/VehicleCard";
+import { ServicesDesktopGrid } from "@/components/ServicesDesktopGrid";
+import { MobileServiceStack } from "@/components/MobileServiceStack";
+import { MobileVehicleStack } from "@/components/MobileVehicleStack";
 import { MobileHeroCarousel } from "@/components/MobileHeroCarousel";
 import { VelocityMarquee } from "@/components/VelocityMarquee";
+import { LocationSection } from "@/components/LocationSection";
+import { CtaBanner } from "@/components/CtaBanner";
 import {
-  Wrench,
-  ShieldCheck,
-  CircleDot,
-  ClipboardCheck,
-  Package,
-  Zap,
-  AlertTriangle,
-  Truck,
-  Scan,
   ArrowRight,
   ChevronRight,
-  MapPin,
-  Phone,
-  Clock,
 } from "lucide-react";
 
 const FEATURED_VEHICLES = [
@@ -30,8 +23,7 @@ const FEATURED_VEHICLES = [
     name: "Mercedes E 63 AMG",
     variant: "GLS AMG Coupé · MANUFAKTUR",
     price: "149.580 €",
-    imageUrl:
-      "https://image-am.pixel-base.de/image/2296/1724622_2026.03.24.12.34.36_30260520_01.jpg?vehicleId=1724622&lsid=639099524760530000",
+    imageUrl: "/cars/e63.jpg",
     href: "https://www.henning-automobil.de/fahrzeugboerse/#!/vehicles/1724622",
   },
   {
@@ -39,8 +31,7 @@ const FEATURED_VEHICLES = [
     name: "Mercedes GLE 53 AMG",
     variant: "Hybrid Night · MANUFAKTUR",
     price: "136.880 €",
-    imageUrl:
-      "https://image-am.pixel-base.de/image/2296/1715338_2026.03.27.21.59.07_30260242_01.jpg?vehicleId=1715338&lsid=639102455475470000",
+    imageUrl: "/cars/gle53.jpg",
     href: "https://www.henning-automobil.de/fahrzeugboerse/#!/vehicles/1715338",
   },
   {
@@ -48,8 +39,7 @@ const FEATURED_VEHICLES = [
     name: "Mercedes AMG GT 53",
     variant: "4MATIC+ · Burmester",
     price: "108.900 €",
-    imageUrl:
-      "https://image-am.pixel-base.de/image/2296/1625698_2026.03.12.21.58.24_30242057_01.jpg?vehicleId=1625698&lsid=639089495045370000",
+    imageUrl: "/cars/amggt53.jpg",
     href: "https://www.henning-automobil.de/fahrzeugboerse/#!/vehicles/1625698",
   },
   {
@@ -57,23 +47,11 @@ const FEATURED_VEHICLES = [
     name: "Mercedes C 63 AMG",
     variant: "E AMG Performance · MANUFAKTUR",
     price: "97.880 €",
-    imageUrl:
-      "https://image-am.pixel-base.de/image/2296/1725781_2026.03.27.22.01.07_30260549_01.jpg?vehicleId=1725781&lsid=639102456677670000",
+    imageUrl: "/cars/c63.jpg",
     href: "https://www.henning-automobil.de/fahrzeugboerse/#!/vehicles/1725781",
   },
 ];
 
-const SERVICES = [
-  { icon: Wrench, title: "Werkstatt-Service", desc: "Wartung & Instandsetzung durch zertifizierte Mercedes-Benz Techniker" },
-  { icon: ShieldCheck, title: "Garantie & Kulanz", desc: "Schnelle, unkomplizierte Abwicklung im Garantiezeitraum" },
-  { icon: CircleDot, title: "Reifendienst", desc: "Montage, Wuchtung und Beratung für optimale Fahrsicherheit" },
-  { icon: ClipboardCheck, title: "HU & AU", desc: "Tägliche DEKRA-Prüftermine direkt bei uns im Haus" },
-  { icon: Package, title: "Teile-Sortiment", desc: "Original-Ersatzteile — bis 10 Uhr bestellt, um 14 Uhr verfügbar" },
-  { icon: Zap, title: "Express-Service", desc: "Kleinreparaturen so schnell wie möglich erledigt" },
-  { icon: AlertTriangle, title: "Pannen-Service", desc: "Unser Service-Mobil macht Sie vor Ort wieder flott" },
-  { icon: Truck, title: "Hol- & Bring-Service", desc: "Wir holen Ihr Fahrzeug ab und bringen es startklar zurück" },
-  { icon: Scan, title: "Scheibenreparatur", desc: "Steinschlag oder Vandalismus — schneller Einbau neuer Scheiben" },
-];
 
 export default function HomePage() {
   return (
@@ -95,7 +73,7 @@ export default function HomePage() {
         <LogoMarquee />
 
         {/* FEATURED VEHICLES */}
-        <section className="py-20 md:py-28 px-5 md:px-8">
+        <section className="py-20 md:py-28 px-5 md:px-8" style={{ background: "rgba(8,3,18,0.38)" }}>
           <div className="max-w-7xl mx-auto">
             <div className="flex items-end justify-between mb-10 md:mb-14">
               <div>
@@ -117,10 +95,16 @@ export default function HomePage() {
                 className="hidden md:flex items-center gap-2 text-sm uppercase font-bold transition-colors duration-200 hover:text-white"
                 style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 700, letterSpacing: "0.08em", color: "rgba(138,138,150,0.6)" }}
               >
-                Alle Fahrzeuge <ChevronRight size={16} />
+                Alle Fahrzeuge <ChevronRight size={16} strokeWidth={1.5} />
               </Link>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {/* Mobile: stacked deck — tap to expand, then links work */}
+            <div className="md:hidden">
+              <MobileVehicleStack />
+            </div>
+
+            {/* Desktop: grid */}
+            <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-4">
               {FEATURED_VEHICLES.map((v) => (
                 <VehicleCard key={v.vehicleId} {...v} />
               ))}
@@ -131,7 +115,7 @@ export default function HomePage() {
                 className="inline-flex items-center gap-2 text-sm uppercase font-bold"
                 style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 700, color: "#C0001E" }}
               >
-                Alle 120+ Fahrzeuge <ChevronRight size={15} />
+                Alle 120+ Fahrzeuge <ChevronRight size={15} strokeWidth={1.5} />
               </Link>
             </div>
           </div>
@@ -140,7 +124,7 @@ export default function HomePage() {
         {/* SERVICES GRID */}
         <section
           className="py-20 md:py-28 px-5 md:px-8"
-          style={{ background: "#151518", borderTop: "1px solid rgba(255,255,255,0.06)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}
+          style={{ background: "rgba(8,3,18,0.38)", borderTop: "1px solid rgba(255,255,255,0.06)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}
         >
           <div className="max-w-7xl mx-auto">
             <div className="mb-12 md:mb-16">
@@ -159,28 +143,13 @@ export default function HomePage() {
               <div className="mt-4 h-px w-16" style={{ background: "#C0001E" }} />
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px" style={{ background: "rgba(255,255,255,0.06)" }}>
-              {SERVICES.map((s) => {
-                const Icon = s.icon;
-                return (
-                  <div key={s.title} className="p-7" style={{ background: "#151518" }}>
-                    <Icon size={24} className="mb-4" style={{ color: "#C0001E" }} />
-                    <h3
-                      className="text-lg uppercase mb-2"
-                      style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 700, color: "#EAEAEE" }}
-                    >
-                      {s.title}
-                    </h3>
-                    <p
-                      className="text-sm leading-relaxed"
-                      style={{ fontFamily: "var(--font-dm-sans)", color: "rgba(138,138,150,0.7)" }}
-                    >
-                      {s.desc}
-                    </p>
-                  </div>
-                );
-              })}
+            {/* Mobile: stacked tap-through deck */}
+            <div className="md:hidden">
+              <MobileServiceStack />
             </div>
+
+            {/* Desktop: grid */}
+            <ServicesDesktopGrid />
 
             <div className="mt-10 text-center">
               <Link
@@ -194,14 +163,14 @@ export default function HomePage() {
                   color: "#C0001E",
                 }}
               >
-                Alle Services ansehen <ArrowRight size={16} />
+                Alle Services ansehen <ArrowRight size={16} strokeWidth={1.5} />
               </Link>
             </div>
           </div>
         </section>
 
         {/* ÜBER UNS */}
-        <section className="py-20 md:py-28 px-5 md:px-8">
+        <section className="py-20 md:py-28 px-5 md:px-8" style={{ background: "rgba(8,3,18,0.38)" }}>
           <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
               <p
@@ -239,7 +208,7 @@ export default function HomePage() {
                 className="inline-flex items-center gap-2 text-sm uppercase font-bold transition-colors duration-200 hover:text-white"
                 style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 700, letterSpacing: "0.08em", color: "#C0001E" }}
               >
-                Unsere Geschichte <ArrowRight size={16} />
+                Unsere Geschichte <ArrowRight size={16} strokeWidth={1.5} />
               </Link>
             </div>
 
@@ -248,18 +217,18 @@ export default function HomePage() {
               style={{ border: "1px solid rgba(255,255,255,0.06)" }}
             >
               <Image
-                src="https://image-am.pixel-base.de/image/2296/1732697_2026.04.30.12.34.44_30260743_01.jpg?vehicleId=1732697&lsid=639131492848370000"
+                src="/cars/ueber-uns.jpg"
                 alt="Henning Automobil MANUFAKTUR Fahrzeug"
                 fill
                 className="object-cover"
               />
               <div
                 className="absolute inset-0"
-                style={{ background: "linear-gradient(135deg, rgba(28,28,30,0.55) 0%, rgba(28,28,30,0.1) 100%)" }}
+                style={{ background: "linear-gradient(135deg, rgba(50,50,58,0.55) 0%, rgba(50,50,58,0.1) 100%)" }}
               />
               <div
                 className="hidden md:block absolute bottom-5 left-5 px-4 py-3"
-                style={{ background: "rgba(28,28,30,0.88)", border: "1px solid rgba(192,0,30,0.3)" }}
+                style={{ background: "rgba(50,50,58,0.88)", border: "1px solid rgba(192,0,30,0.3)" }}
               >
                 <p className="text-2xl" style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 700, color: "#C0001E" }}>
                   Seit 1902
@@ -282,7 +251,7 @@ export default function HomePage() {
         {/* STANDORTE */}
         <section
           className="py-20 md:py-28 px-5 md:px-8"
-          style={{ background: "#151518", borderTop: "1px solid rgba(255,255,255,0.06)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}
+          style={{ background: "rgba(8,3,18,0.38)", borderTop: "1px solid rgba(255,255,255,0.06)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}
         >
           <div className="max-w-7xl mx-auto">
             <div className="mb-12">
@@ -299,131 +268,12 @@ export default function HomePage() {
                 Zwei Mal<br />für Sie da
               </h2>
             </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="p-8" style={{ background: "#1F1F24", border: "1px solid rgba(255,255,255,0.06)" }}>
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-1 h-8" style={{ background: "#C0001E" }} />
-                  <h3 className="text-2xl uppercase" style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 700, color: "#EAEAEE" }}>
-                    Dorstener Str. 329
-                  </h3>
-                </div>
-                <div className="flex flex-col gap-4">
-                  <div className="flex items-start gap-3">
-                    <MapPin size={16} className="mt-0.5 flex-shrink-0" style={{ color: "#C0001E" }} />
-                    <p className="text-sm" style={{ fontFamily: "var(--font-dm-sans)", color: "rgba(138,138,150,0.8)" }}>
-                      Dorstener Straße 329, 44653 Herne
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Phone size={16} className="flex-shrink-0" style={{ color: "#C0001E" }} />
-                    <a href="tel:+49232592920" className="text-sm hover:text-white transition-colors" style={{ fontFamily: "var(--font-dm-sans)", color: "rgba(138,138,150,0.8)" }}>
-                      Service: 02325 - 92 92 0
-                    </a>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Phone size={16} className="flex-shrink-0" style={{ color: "#C0001E" }} />
-                    <a href="tel:+492325929257" className="text-sm hover:text-white transition-colors" style={{ fontFamily: "var(--font-dm-sans)", color: "rgba(138,138,150,0.8)" }}>
-                      Verkauf: 02325 - 92 92 57
-                    </a>
-                  </div>
-                  <div className="mt-2 pt-4 grid grid-cols-2 gap-4" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-                    <div>
-                      <p className="text-xs mb-1" style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 700, color: "#C0001E", letterSpacing: "0.05em" }}>SERVICE PKW</p>
-                      <div className="flex items-start gap-2">
-                        <Clock size={12} className="mt-0.5 flex-shrink-0" style={{ color: "rgba(138,138,150,0.5)" }} />
-                        <p className="text-xs" style={{ fontFamily: "var(--font-dm-sans)", color: "rgba(138,138,150,0.7)" }}>
-                          Mo–Fr 06:00–19:00<br />Sa 08:00–14:00
-                        </p>
-                      </div>
-                    </div>
-                    <div>
-                      <p className="text-xs mb-1" style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 700, color: "#C0001E", letterSpacing: "0.05em" }}>VERKAUF</p>
-                      <div className="flex items-start gap-2">
-                        <Clock size={12} className="mt-0.5 flex-shrink-0" style={{ color: "rgba(138,138,150,0.5)" }} />
-                        <p className="text-xs" style={{ fontFamily: "var(--font-dm-sans)", color: "rgba(138,138,150,0.7)" }}>
-                          Mo–Fr 08:00–18:00<br />Sa 09:00–14:00
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="p-8" style={{ background: "#1F1F24", border: "1px solid rgba(255,255,255,0.06)" }}>
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-1 h-8" style={{ background: "#C0001E" }} />
-                  <h3 className="text-2xl uppercase" style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 700, color: "#EAEAEE" }}>
-                    Roonstraße 67
-                  </h3>
-                </div>
-                <div className="flex flex-col gap-4">
-                  <div className="flex items-start gap-3">
-                    <MapPin size={16} className="mt-0.5 flex-shrink-0" style={{ color: "#C0001E" }} />
-                    <p className="text-sm" style={{ fontFamily: "var(--font-dm-sans)", color: "rgba(138,138,150,0.8)" }}>
-                      Roonstraße 67, 44653 Herne
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Phone size={16} className="flex-shrink-0" style={{ color: "#C0001E" }} />
-                    <a href="tel:+4923239869" className="text-sm hover:text-white transition-colors" style={{ fontFamily: "var(--font-dm-sans)", color: "rgba(138,138,150,0.8)" }}>
-                      02323 - 9 86 90
-                    </a>
-                  </div>
-                  <div className="mt-2 pt-4" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-                    <p className="text-xs mb-1" style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 700, color: "#C0001E", letterSpacing: "0.05em" }}>SERVICE</p>
-                    <div className="flex items-start gap-2">
-                      <Clock size={12} className="mt-0.5 flex-shrink-0" style={{ color: "rgba(138,138,150,0.5)" }} />
-                      <p className="text-xs" style={{ fontFamily: "var(--font-dm-sans)", color: "rgba(138,138,150,0.7)" }}>
-                        Mo–Fr 08:00–18:00 Uhr<br />Sa 09:00–14:00 Uhr
-                      </p>
-                    </div>
-                  </div>
-                  <p className="text-sm mt-2" style={{ fontFamily: "var(--font-dm-sans)", color: "rgba(138,138,150,0.6)" }}>
-                    Freie Werkstatt für alle Marken
-                  </p>
-                </div>
-              </div>
-            </div>
+            <LocationSection />
           </div>
         </section>
 
         {/* CTA BANNER */}
-        <section className="py-16 md:py-20 px-5 md:px-8" style={{ background: "#C0001E" }}>
-          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
-            <div>
-              <h2
-                className="text-3xl md:text-4xl uppercase leading-none text-white mb-2"
-                style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 700 }}
-              >
-                Termin vereinbaren
-              </h2>
-              <p className="text-base" style={{ fontFamily: "var(--font-dm-sans)", color: "rgba(255,255,255,0.75)" }}>
-                Beratungs- oder Werkstatttermin — wir sind für Sie da.
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-4 flex-shrink-0">
-              <a
-                href="https://www.henning-automobil.de/beratungstermin/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 text-sm uppercase font-bold transition-all duration-200 hover:opacity-90"
-                style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 700, letterSpacing: "0.1em", background: "#FFFFFF", color: "#C0001E" }}
-              >
-                Beratungstermin <ArrowRight size={16} />
-              </a>
-              <a
-                href="https://plan.soft-nrg.com/group/-nnY39I1A9Ncto7f1cQPWEgaVsoXZdl1rC-3T8yBYyQkOdGoMSEoUg/signin"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-8 py-4 text-sm uppercase font-bold transition-all duration-200"
-                style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 700, letterSpacing: "0.1em", border: "1px solid rgba(255,255,255,0.5)", color: "#FFFFFF" }}
-              >
-                Werkstatttermin
-              </a>
-            </div>
-          </div>
-        </section>
+        <CtaBanner />
 
       </main>
       <Footer />

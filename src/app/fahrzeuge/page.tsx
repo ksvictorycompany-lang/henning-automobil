@@ -3,7 +3,10 @@ import { Footer } from "@/components/Footer";
 import { PageHeader } from "@/components/PageHeader";
 import { VehicleCard } from "@/components/VehicleCard";
 import { VehicleSliderGrid } from "@/components/VehicleSliderGrid";
-import { ArrowRight, ExternalLink } from "lucide-react";
+import { VehicleFilter } from "@/components/VehicleFilter";
+import { FahrzeugeCtaBanner } from "@/components/FahrzeugeCtaBanner";
+import { ModelleGrid } from "@/components/ModelleGrid";
+import { JungeSterneBanner } from "@/components/JungeSterneBanner";
 
 const ALL_VEHICLES = [
   {
@@ -104,6 +107,7 @@ const ALL_VEHICLES = [
   },
 ];
 
+
 export default function FahrzeugePage() {
   return (
     <>
@@ -119,31 +123,10 @@ export default function FahrzeugePage() {
           <div className="max-w-7xl mx-auto">
 
             {/* CTA zur vollständigen Börse */}
-            <div
-              className="mb-12 p-6 flex flex-col sm:flex-row items-center justify-between gap-6"
-              style={{ background: "#151518", border: "1px solid rgba(192,0,30,0.2)" }}
-            >
-              <div>
-                <p
-                  className="text-xl uppercase mb-1"
-                  style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 700, color: "#EAEAEE" }}
-                >
-                  Über 120 Fahrzeuge verfügbar
-                </p>
-                <p className="text-sm" style={{ fontFamily: "var(--font-dm-sans)", color: "rgba(138,138,150,0.7)" }}>
-                  Alle Modelle, Filter und Finanzierungsrechner in unserer vollständigen Fahrzeugbörse.
-                </p>
-              </div>
-              <a
-                href="https://www.henning-automobil.de/fahrzeugboerse/#!/vehicles"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-shrink-0 inline-flex items-center gap-2 px-7 py-3 text-sm uppercase font-bold transition-all duration-200 hover:opacity-90"
-                style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 700, letterSpacing: "0.1em", background: "#C0001E", color: "#FFFFFF" }}
-              >
-                Zur Fahrzeugbörse <ExternalLink size={15} />
-              </a>
-            </div>
+            <FahrzeugeCtaBanner />
+
+            {/* iOS Wheel Picker Filter */}
+            <VehicleFilter />
 
             {/* Desktop: auto-slider grid */}
             <div className="hidden md:block">
@@ -157,32 +140,19 @@ export default function FahrzeugePage() {
               ))}
             </div>
 
-            {/* Junge Sterne */}
-            <div
-              className="mt-12 p-6 flex flex-col sm:flex-row items-center justify-between gap-6"
-              style={{ background: "#151518", border: "1px solid rgba(255,255,255,0.06)" }}
-            >
-              <div>
-                <p
-                  className="text-xl uppercase mb-1"
-                  style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 700, color: "#EAEAEE" }}
-                >
-                  Junge Sterne von Mercedes-Benz
-                </p>
-                <p className="text-sm" style={{ fontFamily: "var(--font-dm-sans)", color: "rgba(138,138,150,0.7)" }}>
-                  Erstklassige, geprüfte Jahreswagen mit umfassenden Garantien. Über 15.000 Modelle.
-                </p>
-              </div>
-              <a
-                href="https://www.henning-automobil.de/fahrzeugboerse/#!/vehicles?manufacturers=236&qualityseal=true"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-shrink-0 inline-flex items-center gap-2 px-7 py-3 text-sm uppercase font-bold transition-all duration-200"
-                style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 700, letterSpacing: "0.1em", border: "1px solid rgba(192,0,30,0.4)", color: "#C0001E" }}
-              >
-                Junge Sterne entdecken <ArrowRight size={15} />
-              </a>
+            {/* Mercedes Modelle */}
+            <div id="modelle" className="mt-20">
+              <p className="text-xs tracking-[0.4em] uppercase mb-3" style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 600, color: "#C0001E" }}>
+                Alle Modellreihen
+              </p>
+              <h2 className="text-3xl md:text-4xl uppercase leading-none mb-10" style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 700, color: "#EAEAEE" }}>
+                Mercedes-Benz Modelle
+              </h2>
+              <ModelleGrid />
             </div>
+
+            {/* Junge Sterne */}
+            <JungeSterneBanner />
 
           </div>
         </section>

@@ -11,8 +11,7 @@ const SLIDES = [
     name: "GLE 53 AMG",
     variant: "SUV Coupé · Hybrid Night · MANUFAKTUR",
     price: "136.880 €",
-    imageUrl:
-      "https://image-am.pixel-base.de/image/2296/1715338_2026.03.27.21.59.07_30260242_01.jpg?vehicleId=1715338&lsid=639102455475470000",
+    imageUrl: "/cars/gle53.jpg",
     href: "https://www.henning-automobil.de/fahrzeugboerse/#!/vehicles/1715338",
   },
   {
@@ -20,8 +19,7 @@ const SLIDES = [
     name: "E 63 AMG",
     variant: "Limousine · MANUFAKTUR",
     price: "149.580 €",
-    imageUrl:
-      "https://image-am.pixel-base.de/image/2296/1724622_2026.03.24.12.34.36_30260520_01.jpg?vehicleId=1724622&lsid=639099524760530000",
+    imageUrl: "/cars/e63.jpg",
     href: "https://www.henning-automobil.de/fahrzeugboerse/#!/vehicles/1724622",
   },
   {
@@ -29,8 +27,7 @@ const SLIDES = [
     name: "AMG GT 53",
     variant: "Gran Turismo · Burmester · 4MATIC+",
     price: "108.900 €",
-    imageUrl:
-      "https://image-am.pixel-base.de/image/2296/1625698_2026.03.12.21.58.24_30242057_01.jpg?vehicleId=1625698&lsid=639089495045370000",
+    imageUrl: "/cars/amggt53.jpg",
     href: "https://www.henning-automobil.de/fahrzeugboerse/#!/vehicles/1625698",
   },
   {
@@ -38,8 +35,7 @@ const SLIDES = [
     name: "C 63 AMG",
     variant: "E AMG Performance · Pano · MANUFAKTUR",
     price: "97.880 €",
-    imageUrl:
-      "https://image-am.pixel-base.de/image/2296/1725781_2026.03.27.22.01.07_30260549_01.jpg?vehicleId=1725781&lsid=639102456677670000",
+    imageUrl: "/cars/c63.jpg",
     href: "https://www.henning-automobil.de/fahrzeugboerse/#!/vehicles/1725781",
   },
 ];
@@ -55,7 +51,7 @@ export function DesktopHeroCarousel() {
         setCurrent((prev) => (prev + 1) % SLIDES.length);
         setTextVisible(true);
       }, 400);
-    }, 4800);
+    }, 3000);
     return () => clearInterval(timer);
   }, []);
 
@@ -81,7 +77,7 @@ export function DesktopHeroCarousel() {
             alt={s.name}
             fill
             className="object-cover object-center"
-            priority={i === 0}
+            priority={i < 2}
           />
         </div>
       ))}
@@ -91,7 +87,7 @@ export function DesktopHeroCarousel() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(105deg, rgba(12,12,14,0.92) 0%, rgba(12,12,14,0.7) 40%, rgba(12,12,14,0.25) 70%, rgba(12,12,14,0.08) 100%)",
+            "linear-gradient(105deg, rgba(42,42,52,0.92) 0%, rgba(42,42,52,0.7) 40%, rgba(42,42,52,0.25) 70%, rgba(42,42,52,0.08) 100%)",
         }}
       />
 
@@ -100,7 +96,7 @@ export function DesktopHeroCarousel() {
         className="absolute inset-x-0 bottom-0"
         style={{
           height: "180px",
-          background: "linear-gradient(to top, rgba(12,12,14,0.7) 0%, transparent 100%)",
+          background: "linear-gradient(to top, rgba(42,42,52,0.7) 0%, transparent 100%)",
         }}
       />
 

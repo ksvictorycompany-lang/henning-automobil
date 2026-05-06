@@ -29,7 +29,7 @@ export function LogoMarquee() {
   return (
     <section
       style={{
-        background: "#151518",
+        background: "#333340",
         borderBottom: "1px solid rgba(255,255,255,0.06)",
         overflow: "hidden",
         padding: "2rem 0",

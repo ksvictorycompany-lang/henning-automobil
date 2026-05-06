@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Rajdhani, DM_Sans } from "next/font/google";
 import "./globals.css";
+import { DigitalAurora } from "@/components/DigitalAurora";
 
 const rajdhani = Rajdhani({
   variable: "--font-rajdhani",
@@ -32,7 +33,8 @@ export default function RootLayout({
       lang="de"
       className={`${rajdhani.variable} ${dmSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-carbon text-chrome">
+      <body className="min-h-full flex flex-col text-chrome">
+        <DigitalAurora />
         {children}
       </body>
     </html>

@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PageHeader } from "@/components/PageHeader";
+import { CreditCard, CheckCircle } from "lucide-react";
 
 const MILESTONES = [
   { year: "1902", text: "Gründung des Unternehmens in Herne — Leidenschaft für Mobilität von Anfang an." },
@@ -8,6 +9,21 @@ const MILESTONES = [
   { year: "1990s", text: "Erweiterung des Standortes Dorstener Straße und Ausbau des Werkstattbetriebs." },
   { year: "2000s", text: "Einführung moderner Diagnosetechnik und Erweiterung des Teile-Sortiments auf alle Mercedes-Modelle." },
   { year: "Heute", text: "Zwei Standorte in Herne, über 120 Fahrzeuge und ein engagiertes Team — bereit für die Mobilität von morgen." },
+];
+
+const PARTNERS = [
+  {
+    name: "Ostkamp Sanitär",
+    desc: "Sanitär, Heizung & Klima — Ihr Fachbetrieb in Herne",
+  },
+  {
+    name: "Pinguin Alltagshilfe",
+    desc: "Haushaltsnahe Dienstleistungen & Alltagsbegleitung",
+  },
+  {
+    name: "Zoremba Sanierung",
+    desc: "Professionelle Gebäudesanierung & Instandsetzung",
+  },
 ];
 
 export default function UeberUnsPage() {
@@ -65,7 +81,7 @@ export default function UeberUnsPage() {
                   <div
                     key={stat.label}
                     className="p-6 flex flex-col justify-center"
-                    style={{ background: "#151518", border: "1px solid rgba(255,255,255,0.06)" }}
+                    style={{ background: "#333340", border: "1px solid rgba(255,255,255,0.06)" }}
                   >
                     <p
                       className="text-4xl leading-none mb-2"
@@ -102,7 +118,7 @@ export default function UeberUnsPage() {
                     <div key={m.year} className="relative">
                       <div
                         className="absolute -left-10 top-1 w-4 h-4 rounded-full border-2 flex items-center justify-center"
-                        style={{ borderColor: "#C0001E", background: "#0C0C0E" }}
+                        style={{ borderColor: "#C0001E", background: "#2A2A34" }}
                       >
                         <div className="w-1.5 h-1.5 rounded-full" style={{ background: "#C0001E" }} />
                       </div>
@@ -126,8 +142,8 @@ export default function UeberUnsPage() {
 
             {/* Team Tomru */}
             <div
-              className="p-8 md:p-10"
-              style={{ background: "#151518", border: "1px solid rgba(192,0,30,0.15)" }}
+              className="p-8 md:p-10 mb-16"
+              style={{ background: "#333340", border: "1px solid rgba(192,0,30,0.15)" }}
             >
               <p
                 className="text-xs tracking-[0.4em] uppercase mb-3"
@@ -157,6 +173,101 @@ export default function UeberUnsPage() {
                   info@teamtomru.de
                 </a>
               </div>
+            </div>
+
+            {/* Kundenkarte */}
+            <div id="kundenkarte">
+              <p
+                className="text-xs tracking-[0.4em] uppercase mb-3"
+                style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 600, color: "#C0001E" }}
+              >
+                Exklusiv für Kunden
+              </p>
+              <h3
+                className="text-3xl md:text-4xl uppercase mb-10"
+                style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 700, color: "#EAEAEE" }}
+              >
+                Henning Kundenkarte
+              </h3>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                {/* Vorteil */}
+                <div
+                  className="p-8 flex flex-col"
+                  style={{ background: "#333340", border: "1px solid rgba(192,0,30,0.15)" }}
+                >
+                  <div
+                    className="w-14 h-14 flex items-center justify-center mb-6"
+                    style={{ background: "rgba(192,0,30,0.1)", border: "1px solid rgba(192,0,30,0.2)" }}
+                  >
+                    <CreditCard size={26} style={{ color: "#C0001E" }} />
+                  </div>
+                  <p
+                    className="text-5xl font-bold mb-2"
+                    style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 700, color: "#C0001E", lineHeight: 1 }}
+                  >
+                    10%
+                  </p>
+                  <p
+                    className="text-xl uppercase mb-4"
+                    style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 700, color: "#EAEAEE" }}
+                  >
+                    Rabatt auf alle Services
+                  </p>
+                  <p
+                    className="text-sm leading-relaxed"
+                    style={{ fontFamily: "var(--font-dm-sans)", color: "rgba(138,138,150,0.8)" }}
+                  >
+                    Als Inhaber der Henning Kundenkarte erhalten Sie bei uns und unseren Partnerunternehmen
+                    10 % Rabatt auf ausgewählte Dienstleistungen. Einfach vorzeigen — und sparen.
+                  </p>
+                </div>
+
+                {/* Partner */}
+                <div
+                  className="p-8"
+                  style={{ background: "#333340", border: "1px solid rgba(255,255,255,0.06)" }}
+                >
+                  <p
+                    className="text-xs tracking-[0.3em] uppercase mb-6"
+                    style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 600, color: "#C0001E" }}
+                  >
+                    Unsere Partner
+                  </p>
+                  <div className="flex flex-col gap-5">
+                    {PARTNERS.map((p) => (
+                      <div key={p.name} className="flex items-start gap-3">
+                        <CheckCircle
+                          size={16}
+                          className="mt-0.5 flex-shrink-0"
+                          style={{ color: "#C0001E" }}
+                        />
+                        <div>
+                          <p
+                            className="text-base uppercase mb-0.5"
+                            style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 700, color: "#EAEAEE" }}
+                          >
+                            {p.name}
+                          </p>
+                          <p
+                            className="text-sm"
+                            style={{ fontFamily: "var(--font-dm-sans)", color: "rgba(138,138,150,0.7)" }}
+                          >
+                            {p.desc}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <p
+                className="text-sm"
+                style={{ fontFamily: "var(--font-dm-sans)", color: "rgba(138,138,150,0.5)" }}
+              >
+                Die Kundenkarte erhalten Sie kostenlos an unserem Hauptstandort, Dorstener Straße 329, 44653 Herne.
+              </p>
             </div>
 
           </div>

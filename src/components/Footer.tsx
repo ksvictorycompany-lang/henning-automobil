@@ -1,11 +1,14 @@
 import Link from "next/link";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 
+const WERKSTATT_URL =
+  "https://www.mercedes-benz.de/passengercars/services-accessories/service-booking/oab.module.html#/dealer?oabDealerGroup=GS00107034";
+
 export function Footer() {
   return (
     <footer
       className="mt-auto"
-      style={{ background: "#080809", borderTop: "1px solid rgba(255,255,255,0.06)" }}
+      style={{ background: "#1E1E28", borderTop: "1px solid rgba(255,255,255,0.06)" }}
     >
       <div className="max-w-7xl mx-auto px-5 md:px-8 py-14 md:py-18">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-10 md:gap-6">
@@ -36,11 +39,11 @@ export function Footer() {
             <ul className="flex flex-col gap-3">
               {[
                 { href: "/fahrzeuge", label: "Alle Fahrzeuge" },
-                { href: "/modelle", label: "Mercedes Modelle" },
-                { href: "/junge-sterne", label: "Junge Sterne" },
+                { href: "/fahrzeuge#modelle", label: "Mercedes Modelle" },
+                { href: "/fahrzeuge#junge-sterne", label: "Junge Sterne" },
                 { href: "https://www.wirkaufendeinenstern.de/", label: "Fahrzeugankauf ↗", external: true },
               ].map((l) => (
-                <li key={l.href}>
+                <li key={l.label}>
                   {l.external ? (
                     <a
                       href={l.href}
@@ -65,7 +68,7 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Service & Termin */}
+          {/* Service */}
           <div>
             <p
               className="text-xs tracking-widest uppercase mb-5"
@@ -74,23 +77,44 @@ export function Footer() {
               Service
             </p>
             <ul className="flex flex-col gap-3">
-              {[
-                { href: "/service/pkw", label: "PKW Service" },
-                { href: "/service/transporter", label: "Transporter" },
-                { href: "/service/lkw", label: "LKW Service" },
-                { href: "/beratungstermin", label: "Beratungstermin" },
-                { href: "/kundenkarte", label: "Kundenkarte" },
-              ].map((l) => (
-                <li key={l.href}>
-                  <Link
-                    href={l.href}
-                    className="text-sm transition-colors duration-200 hover:text-white"
-                    style={{ fontFamily: "var(--font-dm-sans)", color: "rgba(138,138,150,0.8)" }}
-                  >
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
+              <li>
+                <Link
+                  href="/service"
+                  className="text-sm transition-colors duration-200 hover:text-white"
+                  style={{ fontFamily: "var(--font-dm-sans)", color: "rgba(138,138,150,0.8)" }}
+                >
+                  Alle Services
+                </Link>
+              </li>
+              <li>
+                <a
+                  href={WERKSTATT_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm transition-colors duration-200 hover:text-white"
+                  style={{ fontFamily: "var(--font-dm-sans)", color: "rgba(138,138,150,0.8)" }}
+                >
+                  Werkstatttermin ↗
+                </a>
+              </li>
+              <li>
+                <Link
+                  href="/kontakt#termin"
+                  className="text-sm transition-colors duration-200 hover:text-white"
+                  style={{ fontFamily: "var(--font-dm-sans)", color: "rgba(138,138,150,0.8)" }}
+                >
+                  Beratungstermin
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/ueber-uns#kundenkarte"
+                  className="text-sm transition-colors duration-200 hover:text-white"
+                  style={{ fontFamily: "var(--font-dm-sans)", color: "rgba(138,138,150,0.8)" }}
+                >
+                  Kundenkarte
+                </Link>
+              </li>
             </ul>
           </div>
 

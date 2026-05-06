@@ -1,3 +1,14 @@
+"use client";
+
+import dynamic from "next/dynamic";
+import { PaperGrain } from "@/components/PaperGrain";
+import { HEADER_SHADER } from "@/lib/serviceShaders";
+
+const WarpCanvas = dynamic(
+  () => import("@/components/WarpCanvas").then((m) => ({ default: m.WarpCanvas })),
+  { ssr: false }
+);
+
 interface PageHeaderProps {
   eyebrow?: string;
   title: string;
@@ -7,21 +18,20 @@ interface PageHeaderProps {
 export function PageHeader({ eyebrow, title, subtitle }: PageHeaderProps) {
   return (
     <div
-      className="pt-32 pb-16 md:pt-40 md:pb-20 px-5 md:px-8"
-      style={{
-        background: "linear-gradient(180deg, #151518 0%, #0C0C0E 100%)",
-        borderBottom: "1px solid rgba(255,255,255,0.06)",
-      }}
+      className="relative overflow-hidden pt-32 pb-16 md:pt-40 md:pb-20 px-5 md:px-8"
+      style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}
     >
-      <div className="max-w-7xl mx-auto">
+      <WarpCanvas config={HEADER_SHADER} />
+      <div
+        className="absolute inset-0 pointer-events-none z-[1]"
+        style={{ background: "rgba(10,12,22,0.50)" }}
+      />
+      <PaperGrain style={{ zIndex: 2 }} />
+      <div className="relative z-[3] max-w-7xl mx-auto">
         {eyebrow && (
           <p
             className="text-xs tracking-[0.4em] uppercase mb-4"
-            style={{
-              fontFamily: "var(--font-rajdhani)",
-              fontWeight: 600,
-              color: "#C0001E",
-            }}
+            style={{ fontFamily: "var(--font-rajdhani)", fontWeight: 600, color: "#C0001E" }}
           >
             {eyebrow}
           </p>

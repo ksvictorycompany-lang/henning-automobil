@@ -50,6 +50,7 @@ function SliderCard({ vehicle }: { vehicle: Vehicle }) {
         src={vehicle.imageUrl}
         alt={vehicle.name}
         fill
+        unoptimized
         className="object-cover"
         sizes="360px"
       />
@@ -58,7 +59,7 @@ function SliderCard({ vehicle }: { vehicle: Vehicle }) {
         style={{
           position: "absolute",
           inset: 0,
-          background: "linear-gradient(to top, rgba(12,12,14,0.92) 0%, rgba(12,12,14,0.3) 45%, transparent 70%)",
+          background: "linear-gradient(to top, rgba(42,42,52,0.92) 0%, rgba(42,42,52,0.3) 45%, transparent 70%)",
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-end",
